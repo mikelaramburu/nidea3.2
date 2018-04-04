@@ -32,6 +32,9 @@ public class MaterialesController extends HttpServlet {
 
 		try {
 
+			String search = request.getParameter("search");
+			System.out.println("Filtro busqueda = " + search);
+
 			MaterialDAO dao = MaterialDAO.getInstance();
 			materiales = dao.getAll();
 

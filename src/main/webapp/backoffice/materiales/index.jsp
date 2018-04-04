@@ -4,6 +4,13 @@
 
 <h1>BACKOFFICE Materiales</h1>
 
+Buscador
+<form action="backoffice/materiales" method="get">
+	<input type="text" name="search" required placeholder="Nombre del Material">
+	<input type="submit" value="Buscar">	
+</form>
+
+
 <ol>
 	<c:forEach items="${materiales}" var="material">
 		<c:set var="clase" value="" />	
