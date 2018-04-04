@@ -53,27 +53,24 @@ public class LoginController extends HttpServlet {
 
 			if (USER.equalsIgnoreCase(usuario) && PASS.equals(password)) {
 
-				// enviar como atributo la lista de materiales
-				MaterialDAO dao = MaterialDAO.getInstance();
-				request.setAttribute("materiales", dao.getAll());
-
 				// guardar usuario en session
 				HttpSession session = request.getSession();
 				session.setAttribute("usuario", usuario);
 
-				
-				/* 
-				 * Tiempo expiracion session, tambien se puede configurar web.xml 
-				 * un valor negativo, indica que nunca expira
+				/*
+				 * Tiempo expiracion session, tambien se puede configurar web.xml un valor
+				 * negativo, indica que nunca expira
 				 * 
-				 *  <session-config>
-    			 *		<session-timeout>-1</session-timeout>
-				 *	</session-config>
+				 * <session-config> <session-timeout>-1</session-timeout> </session-config>
 				 * 
-				 * */
+				 */
 				session.setMaxInactiveInterval(SESSION_EXPIRATION);
 
+				// enviar como atributo la lista de materiales
+				MaterialDAO dao = MaterialDAO.getInstance();
+				request.setAttribute("materiales", dao.getAll());
 				view = "backoffice/index.jsp";
+
 				alert = new Alert("Ongi Etorri", Alert.TIPO_PRIMARY);
 			} else {
 
