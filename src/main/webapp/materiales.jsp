@@ -2,7 +2,7 @@
 <%@include file="/templates/navbar.jsp" %>
 <%@include file="/templates/alert.jsp" %>
 
-<h1>BACKOFFICE Materiales</h1>
+<h1>Materiales</h1>
 
 <ol>
 	<c:forEach items="${materiales}" var="material">
