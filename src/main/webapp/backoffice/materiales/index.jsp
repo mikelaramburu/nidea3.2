@@ -1,3 +1,4 @@
+<%@page import="com.ipartek.formacion.nidea.controller.backoffice.MaterialesController"%>
 <%@include file="/templates/head.jsp" %>
 <%@include file="/templates/navbar.jsp" %>
 <%@include file="/templates/alert.jsp" %>
@@ -6,6 +7,7 @@
 
 Buscador
 <form action="backoffice/materiales" method="get">
+	<input type="hidden" name="op" value="<%=MaterialesController.OP_BUSQUEDA%>">
 	<input type="text" name="search" required placeholder="Nombre del Material">
 	<input type="submit" value="Buscar">	
 </form>
@@ -22,7 +24,11 @@ Buscador
 				<c:set var="clase" value="text-primary" />
 			</c:when>
 		</c:choose>	
-		<li>${material.nombre} - <span class="${clase}">${material.precio} &euro;</span></li>	
+		<li>
+			<a href="backoffice/materiales?id=${material.id}&op=<%=MaterialesController.OP_MOSTRAR_FORMULARIO%>">
+				${material.nombre} - <span class="${clase}">${material.precio} &euro;</span>
+			</a>
+		</li>	
 	</c:forEach>
 </ol>
 
