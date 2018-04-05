@@ -157,6 +157,7 @@ public class MaterialesController extends HttpServlet {
 		if (id > -1) {
 			// TODO recuperar de la BBDD que es un material que existe
 			alert = new Alert("Mostramos Detall id:" + id, Alert.TIPO_WARNING);
+			material.setId(id);
 
 		} else {
 			alert = new Alert("Nuevo Producto", Alert.TIPO_WARNING);
@@ -183,20 +184,28 @@ public class MaterialesController extends HttpServlet {
 
 		if (request.getParameter("op") != null) {
 			op = Integer.parseInt(request.getParameter("op"));
+		} else {
+			op = 0;
 		}
 
 		search = (request.getParameter("search") != null) ? request.getParameter("search") : "";
 
 		if (request.getParameter("id") != null) {
 			id = Integer.parseInt(request.getParameter("id"));
+		} else {
+			id = -1;
 		}
 
 		if (request.getParameter("nombre") != null) {
 			nombre = request.getParameter("nombre");
+		} else {
+			nombre = "";
 		}
 
 		if (request.getParameter("precio") != null) {
 			precio = Float.parseFloat(request.getParameter("precio"));
+		} else {
+			precio = 0;
 		}
 
 	}
