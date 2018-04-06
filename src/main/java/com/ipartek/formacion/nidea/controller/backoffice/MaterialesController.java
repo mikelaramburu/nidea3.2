@@ -162,7 +162,11 @@ public class MaterialesController extends HttpServlet {
 
 	private void eliminar(HttpServletRequest request) {
 
-		alert = new Alert("MAterial Eliminado id " + id, Alert.TIPO_PRIMARY);
+		if (dao.delete(id)) {
+			alert = new Alert("Material Eliminado id " + id, Alert.TIPO_PRIMARY);
+		} else {
+			alert = new Alert("Error Eliminando, sentimos las molestias ", Alert.TIPO_WARNING);
+		}
 		listar(request);
 
 	}
