@@ -99,6 +99,8 @@ public class MaterialesController extends HttpServlet {
 	private void doProcess(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
 
+		alert = null;
+
 		try {
 
 			recogerParametros(request);
@@ -133,7 +135,19 @@ public class MaterialesController extends HttpServlet {
 	}
 
 	private void guardar(HttpServletRequest request) {
-		// TODO Auto-generated method stub
+
+		Material material = new Material();
+		if (id == -1) {
+			alert = new Alert("Creado Nuevo Material ", Alert.TIPO_PRIMARY);
+			material.setNombre("Nuevo");
+		} else {
+			alert = new Alert("Modificado Material id: " + id, Alert.TIPO_PRIMARY);
+			material.setId(id);
+			material.setNombre("Modificado");
+		}
+
+		request.setAttribute("material", material);
+		dispatcher = request.getRequestDispatcher(VIEW_FORM);
 
 	}
 
@@ -147,7 +161,9 @@ public class MaterialesController extends HttpServlet {
 	}
 
 	private void eliminar(HttpServletRequest request) {
-		// TODO Auto-generated method stub
+
+		alert = new Alert("MAterial Eliminado id " + id, Alert.TIPO_PRIMARY);
+		listar(request);
 
 	}
 

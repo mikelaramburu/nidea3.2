@@ -7,7 +7,7 @@
 	<div class="form-group row">
 		<a class="btn btn-outline-dark btn-lg" href="backoffice/materiales">Volver</a>
 	</div>
-	<form action="" method="post">
+	<form action="backoffice/materiales" method="post">
 	  <div class="form-group row">
 	    <label for="id" class="col-sm-2 col-form-label">ID:</label>
 	    <div class="col-sm-2">
@@ -30,19 +30,28 @@
 	  </div>
 	</div>
 	<br>  
-	<div class="form-group row">
-	    <div class="col-sm-12">
-	      <button type="submit" class="btn btn-primary btn-lg btn-block">Crear</button>
-	   </div>
-	  </div>
-	  <div class="form-group row">
-	    <div class="col-sm-6">
-	      <button type="submit" class="btn btn-success btn-lg btn-block">Modificar</button>
-	    </div>
-	    <div class="col-sm-6">
-	      <button type="submit" class="btn btn-danger btn-lg btn-block">Eliminar</button>
-	    </div>
-	  </div>
+	
+		<c:if test="${material.id == -1}">
+		   <div class="form-group row">
+			   <div class="col-sm-12">
+			   	  <input type="hidden" name="op" value="<%=MaterialesController.OP_GUARDAR%>"> 	
+			      <button type="submit" class="btn btn-primary btn-lg btn-block">Crear</button>
+			  </div>
+		  </div>
+		</c:if>
+		  
+		<c:if test="${material.id > -1}">  
+			  <div class="form-group row">
+			    <div class="col-sm-6">
+			      <input type="hidden" name="op" value="<%=MaterialesController.OP_GUARDAR%>"> 	
+			      <button type="submit" class="btn btn-success btn-lg btn-block">Modificar</button>
+			    </div>
+			    <div class="col-sm-6">			      
+			      <a href="backoffice/materiales?id=${material.id}&op=<%=MaterialesController.OP_ELIMINAR%>" 
+			       class="btn btn-danger btn-lg btn-block">Eliminar</a>
+			    </div>
+			  </div>
+		</c:if>	  
 	</form>
 </div>
 
