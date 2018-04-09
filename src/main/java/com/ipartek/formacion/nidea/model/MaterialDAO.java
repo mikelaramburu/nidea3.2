@@ -92,8 +92,22 @@ public class MaterialDAO implements Persistible<Material> {
 
 	@Override
 	public Material getById(int id) {
-		// TODO Auto-generated method stub
-		return null;
+		Material material = null;
+		String sql = "SELECT `id`, `nombre`, `precio` FROM `material` WHERE `id` = ? ;";
+		try (Connection con = ConnectionManager.getConnection(); PreparedStatement pst = con.prepareStatement(sql);) {
+			pst.setInt(1, id);
+			try (ResultSet rs = pst.executeQuery()) {
+				while (rs.next()) {
+					material = new Material();
+					material.setId(rs.getInt("id"));
+					material.setNombre(rs.getString("nombre"));
+					material.setPrecio(rs.getFloat("precio"));
+				}
+			}
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		return material;
 	}
 
 	@Override

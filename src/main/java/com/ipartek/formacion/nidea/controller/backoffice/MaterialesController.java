@@ -175,9 +175,7 @@ public class MaterialesController extends HttpServlet {
 
 		Material material = new Material();
 		if (id > -1) {
-			// TODO recuperar de la BBDD que es un material que existe
-			alert = new Alert("Mostramos Detall id:" + id, Alert.TIPO_WARNING);
-			material.setId(id);
+			material = dao.getById(id);
 
 		} else {
 			alert = new Alert("Nuevo Producto", Alert.TIPO_WARNING);
