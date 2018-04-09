@@ -59,10 +59,7 @@ public class MaterialDAO implements Persistible<Material> {
 
 			Material m = null;
 			while (rs.next()) {
-				m = new Material();
-				m.setId(rs.getInt("id"));
-				m.setNombre(rs.getString("nombre"));
-				m.setPrecio(rs.getFloat("precio"));
+				m = mapper(rs);
 				lista.add(m);
 			}
 
@@ -98,10 +95,7 @@ public class MaterialDAO implements Persistible<Material> {
 			pst.setInt(1, id);
 			try (ResultSet rs = pst.executeQuery()) {
 				while (rs.next()) {
-					material = new Material();
-					material.setId(rs.getInt("id"));
-					material.setNombre(rs.getString("nombre"));
-					material.setPrecio(rs.getFloat("precio"));
+					material = mapper(rs);
 				}
 			}
 		} catch (Exception e) {
@@ -152,6 +146,18 @@ public class MaterialDAO implements Persistible<Material> {
 			}
 		}
 		return resul;
+	}
+
+	@Override
+	public Material mapper(ResultSet rs) throws SQLException {
+		Material m = null;
+		if (rs != null) {
+			m = new Material();
+			m.setId(rs.getInt("id"));
+			m.setNombre(rs.getString("nombre"));
+			m.setPrecio(rs.getFloat("precio"));
+		}
+		return m;
 	}
 
 }
