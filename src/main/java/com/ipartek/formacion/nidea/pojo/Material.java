@@ -1,9 +1,21 @@
 package com.ipartek.formacion.nidea.pojo;
 
+import javax.validation.constraints.DecimalMax;
+import javax.validation.constraints.DecimalMin;
+import javax.validation.constraints.NotNull;
+import javax.validation.constraints.Size;
+
 public class Material {
 
 	private int id;
+
+	@NotNull
+	@Size(min = 1, max = 45)
 	private String nombre;
+
+	@NotNull
+	@DecimalMin("0.1")
+	@DecimalMax("999999999.99")
 	private float precio;
 
 	public Material() {

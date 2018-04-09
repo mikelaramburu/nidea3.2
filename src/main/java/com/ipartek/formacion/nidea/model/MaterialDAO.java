@@ -158,4 +158,23 @@ public class MaterialDAO implements Persistible<Material> {
 		return m;
 	}
 
+	public ArrayList<Material> search(String nombreBuscar) {
+		ArrayList<Material> lista = new ArrayList<Material>();
+		String sql = "SELECT `id`, `nombre`, `precio` FROM `material` WHERE `nombre` LIKE '%" + nombreBuscar
+				+ "%' ORDER BY `id` DESC LIMIT 500;";
+		try (Connection con = ConnectionManager.getConnection();
+				PreparedStatement pst = con.prepareStatement(sql);
+				ResultSet rs = pst.executeQuery();) {
+			Material m = null;
+			while (rs.next()) {
+				m = mapper(rs);
+				lista.add(m);
+			}
+
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		return lista;
+	}
+
 }
