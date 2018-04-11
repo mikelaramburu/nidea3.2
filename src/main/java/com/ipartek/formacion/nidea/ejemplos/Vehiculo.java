@@ -34,6 +34,10 @@ public abstract class Vehiculo {
 		System.out.println("Luces encendidas");
 	}
 
+	static void dimeMatricula() {
+		// metodo tonto para probar 'protected'
+	};
+
 	@Override
 	public String toString() {
 		return "Vehiculo [puertas=" + puertas + ", color=" + color + "]";

@@ -19,6 +19,7 @@ public class VehiculoElectrico extends Vehiculo {
 	public void arrancar() {
 		// super.arrancar();
 		System.out.println("pulsar boton encendido");
+		Vehiculo.dimeMatricula();
 	}
 
 	public float getPotencia() {

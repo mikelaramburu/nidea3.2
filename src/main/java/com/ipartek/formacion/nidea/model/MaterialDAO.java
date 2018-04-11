@@ -6,8 +6,8 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
 
-import com.ipartek.formacion.nidea.ejemplos.Utilidades;
 import com.ipartek.formacion.nidea.pojo.Material;
+import com.ipartek.formacion.nidea.util.Utilidades;
 
 public class MaterialDAO implements Persistible<Material> {
 

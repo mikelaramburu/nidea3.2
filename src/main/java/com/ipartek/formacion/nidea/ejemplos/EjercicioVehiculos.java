@@ -1,7 +1,5 @@
 package com.ipartek.formacion.nidea.ejemplos;
 
-import com.ipartek.formacion.nidea.ejemplos.VehiculoElectrico;
-
 public class EjercicioVehiculos {
 
 	public static void main(String[] args) {
@@ -12,6 +10,8 @@ public class EjercicioVehiculos {
 		 * Vehiculo rayoMacQueen = new Vehiculo();
 		 * System.out.println(rayoMacQueen.toString());
 		 */
+
+		Vehiculo.dimeMatricula();
 
 		System.out.println("---------------------------------------");
 
