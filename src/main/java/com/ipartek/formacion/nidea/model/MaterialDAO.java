@@ -6,6 +6,7 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
 
+import com.ipartek.formacion.nidea.ejemplos.Utilidades;
 import com.ipartek.formacion.nidea.pojo.Material;
 
 public class MaterialDAO implements Persistible<Material> {
@@ -74,6 +75,9 @@ public class MaterialDAO implements Persistible<Material> {
 	@Override
 	public boolean save(Material pojo) {
 		boolean resul = false;
+
+		// sanear el nombre
+		pojo.setNombre(Utilidades.limpiarEspacios(pojo.getNombre()));
 
 		if (pojo != null) {
 			if (pojo.getId() == -1) {
@@ -160,15 +164,17 @@ public class MaterialDAO implements Persistible<Material> {
 
 	public ArrayList<Material> search(String nombreBuscar) {
 		ArrayList<Material> lista = new ArrayList<Material>();
-		String sql = "SELECT `id`, `nombre`, `precio` FROM `material` WHERE `nombre` LIKE '%" + nombreBuscar
-				+ "%' ORDER BY `id` DESC LIMIT 500;";
-		try (Connection con = ConnectionManager.getConnection();
-				PreparedStatement pst = con.prepareStatement(sql);
-				ResultSet rs = pst.executeQuery();) {
-			Material m = null;
-			while (rs.next()) {
-				m = mapper(rs);
-				lista.add(m);
+		String sql = "SELECT `id`, `nombre`, `precio` FROM `material` WHERE `nombre` LIKE ? ORDER BY `id` DESC LIMIT 500;";
+		try (Connection con = ConnectionManager.getConnection(); PreparedStatement pst = con.prepareStatement(sql);) {
+
+			pst.setString(1, "%" + nombreBuscar + "%");
+			try (ResultSet rs = pst.executeQuery();) {
+
+				Material m = null;
+				while (rs.next()) {
+					m = mapper(rs);
+					lista.add(m);
+				}
 			}
 
 		} catch (Exception e) {

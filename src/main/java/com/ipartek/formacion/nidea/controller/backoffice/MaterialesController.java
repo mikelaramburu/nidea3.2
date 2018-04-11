@@ -143,12 +143,7 @@ public class MaterialesController extends HttpServlet {
 
 		} finally {
 			request.setAttribute("alert", alert);
-
-			if (op == OP_ELIMINAR) {
-				response.sendRedirect(request.getContextPath() + "/backoffice/materiales");
-			} else {
-				dispatcher.forward(request, response);
-			}
+			dispatcher.forward(request, response);
 		}
 	}
 
@@ -179,7 +174,7 @@ public class MaterialesController extends HttpServlet {
 				if (dao.save(material)) {
 					alert = new Alert("Material guardado", Alert.TIPO_PRIMARY);
 				} else {
-					alert = new Alert("Lo sentimos pero ay existe el nombre del material", Alert.TIPO_WARNING);
+					alert = new Alert("Lo sentimos pero ya existe el nombre del material", Alert.TIPO_WARNING);
 				}
 			}
 		} catch (NumberFormatException e) {
@@ -208,6 +203,7 @@ public class MaterialesController extends HttpServlet {
 		} else {
 			alert = new Alert("Error Eliminando, sentimos las molestias ", Alert.TIPO_WARNING);
 		}
+		listar(request);
 
 	}
 
