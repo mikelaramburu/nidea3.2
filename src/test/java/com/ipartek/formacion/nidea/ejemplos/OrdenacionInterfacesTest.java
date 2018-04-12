@@ -4,6 +4,7 @@ import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.fail;
 
 import java.util.ArrayList;
+import java.util.Collections;
 
 import org.junit.After;
 import org.junit.AfterClass;
@@ -83,7 +84,21 @@ public class OrdenacionInterfacesTest {
 
 	@Test
 	public void testCollectionSort() {
-		fail("Not yet implemented");
+
+		Collections.sort(coleccion, new ComparatorOrdenables());
+
+		assertEquals(0, coleccion.get(0).getValor());
+		assertEquals(1, coleccion.get(1).getValor());
+		assertEquals(3, coleccion.get(2).getValor());
+		assertEquals(9, coleccion.get(3).getValor());
+
+		Collections.reverse(coleccion);
+
+		assertEquals(9, coleccion.get(0).getValor());
+		assertEquals(3, coleccion.get(1).getValor());
+		assertEquals(1, coleccion.get(2).getValor());
+		assertEquals(0, coleccion.get(3).getValor());
+
 	}
 
 }
