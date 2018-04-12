@@ -7,6 +7,8 @@ public final class CirculoColoreado extends Circulo {
 	public CirculoColoreado() {
 		super();
 		this.color = "blanco";
+
+		System.out.println(Imprimible.BRAILLE);
 	}
 
 	@Override

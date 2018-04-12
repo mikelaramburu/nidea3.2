@@ -1,6 +1,6 @@
 package com.ipartek.formacion.nidea.ejemplos;
 
-public abstract class Vehiculo {
+public abstract class Vehiculo implements Ordenable {
 
 	private int puertas;
 	private String color;
@@ -41,6 +41,10 @@ public abstract class Vehiculo {
 	@Override
 	public String toString() {
 		return "Vehiculo [puertas=" + puertas + ", color=" + color + "]";
+	}
+
+	public int getValor() {
+		return this.puertas;
 	}
 
 }

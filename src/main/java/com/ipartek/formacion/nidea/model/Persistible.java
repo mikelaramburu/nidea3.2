@@ -2,7 +2,7 @@ package com.ipartek.formacion.nidea.model;
 
 import java.sql.ResultSet;
 import java.sql.SQLException;
-import java.util.ArrayList;
+import java.util.List;
 
 public interface Persistible<P> {
 
@@ -12,7 +12,7 @@ public interface Persistible<P> {
 	 * 
 	 * @return Coleccion
 	 */
-	public ArrayList<P> getAll();
+	public List<P> getAll();
 
 	/**
 	 * Obtenemos el detalle de un registro

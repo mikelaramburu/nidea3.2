@@ -1,6 +1,8 @@
 package com.ipartek.formacion.nidea.ejemplos;
 
-public abstract class ObjetoGrafico implements Imprimible {
+import java.io.Serializable;
+
+public abstract class ObjetoGrafico implements Imprimible, Cloneable, Serializable {
 
 	private int x;
 	private int y;
