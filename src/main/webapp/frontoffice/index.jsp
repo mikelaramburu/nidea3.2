@@ -2,6 +2,10 @@
 <%@include file="/templates/navbar.jsp" %>
 <%@include file="/templates/alert.jsp" %>
 
+<script>
+setTimeout(function () { location.reload(1); }, 5000);	
+</script>
+
 YA ESTAS LOGEADO EN EL FRONTOFFICE <br>
 
 

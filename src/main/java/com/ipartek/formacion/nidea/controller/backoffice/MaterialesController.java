@@ -2,12 +2,10 @@ package com.ipartek.formacion.nidea.controller.backoffice;
 
 import java.io.IOException;
 import java.util.ArrayList;
-import java.util.HashMap;
 import java.util.Set;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletConfig;
-import javax.servlet.ServletContext;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -115,17 +113,6 @@ public class MaterialesController extends HttpServlet {
 			throws ServletException, IOException {
 
 		alert = null;
-
-		ServletContext context = request.getServletContext();
-		HashMap<Integer, String> usuarios = (HashMap<Integer, String>) context.getAttribute("usuarios_conectados");
-		if (usuarios == null) {
-			usuarios = new HashMap<Integer, String>();
-		}
-
-		usuarios.put(3, "nombreParameter");
-
-		context.setAttribute("usuarios_conectados", usuarios);
-
 		try {
 
 			recogerParametros(request);
