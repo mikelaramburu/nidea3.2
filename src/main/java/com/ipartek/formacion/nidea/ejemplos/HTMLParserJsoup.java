@@ -10,14 +10,6 @@ public class HTMLParserJsoup {
 
 	public static void main(String[] args) throws IOException {
 
-		String url = "http://192.168.0.15:8080/nidea/login";
-
-		Connection.Response response = Jsoup.connect(url).method(Connection.Method.POST).data("usuario", "admin")
-				.data("password", "admin").execute();
-
-		Document doc = response.parse();
-		System.out.println(doc.getElementsByTag("h1").get(0).text());
-
 		/*
 		 * Document doc = Jsoup.connect("http://example.com/").get(); String title =
 		 * doc.title();
@@ -34,6 +26,28 @@ public class HTMLParserJsoup {
 		 * }
 		 * 
 		 */
+
+		String url = "http://192.168.0.42:8080/nidea/login";
+		String urlMaterial = "http://192.168.0.42:8080/nidea/backoffice/materiales?op=1";
+
+		Connection.Response response = Jsoup.connect(url).method(Connection.Method.POST).data("usuario", "admin")
+				.data("password", "admin").execute();
+
+		Document docBackoffice = response.parse();
+		System.out.println(docBackoffice.getElementsByTag("h1").get(0).text());
+		String cookieSession = response.cookies().get("JSESSIONID");
+
+		// Connection.Response response2 =
+		// Jsoup.connect(url).method(Connection.Method.GET).execute();
+		//
+		// Document docMateriales = response2.parse();
+		// Element botonCrear = docMateriales.getElementsByTag("button").get(0);
+
+		Connection.Response responseCrearMaterial = Jsoup
+				.connect("http://192.168.0.42:8080/nidea/backoffice/materiales?op=2").method(Connection.Method.POST)
+				.data("nombre", "Nuevo MAterial").data("precio", "11.0").cookie("JSESSIONID", cookieSession).execute();
+
+		// Document docBackoffdsdicewrsewte = response.parse();
 
 	}
 
