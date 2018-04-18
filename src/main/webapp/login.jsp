@@ -5,23 +5,23 @@
 <div id="login">
 
   <form class="form-signin" action="login" method="post">     
-
+	  <label for="usuario">Nombre Usuario</label>
       <div class="form-label-group">
         <input type="text" class="form-control"
                name="usuario" 
                placeholder="Nombre Usuario" 
                required autofocus>
                
-        <label for="usuario">Nombre Usuario</label>
+      
       </div>
-
+	  <label for="password">Contraseña</label>
       <div class="form-label-group">
         <input type="password" 
                name="password" 
                class="form-control" 
                placeholder="Contraseña" required>
                
-        <label for="password">Contraseña</label>
+      
       </div>
      
       <button class="btn btn-lg btn-primary btn-block" type="submit">Entrar</button>
